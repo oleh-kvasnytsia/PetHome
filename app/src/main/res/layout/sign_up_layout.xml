@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imLogo"
+        android:layout_width="112dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="213dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tvMain"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:gravity="center"
+        android:text="Register now"
+        android:textColor="#782620"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imLogo" />
+
+    <TextView
+        android:id="@+id/tvFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/poppins"
+        android:text="Enter your first name"
+        app:layout_constraintStart_toStartOf="@+id/tvMain"
+        app:layout_constraintTop_toBottomOf="@+id/tvMain" />
+
+
+    <EditText
+        android:id="@+id/edFirstName"
+        android:layout_width="0dp"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        android:elevation="2dp"
+
+
+        android:includeFontPadding="false"
+        android:paddingStart="10dp"
+        android:hint="First name"
+        android:textColorHint="#656773"
+        app:layout_constraintEnd_toEndOf="@+id/tvMain"
+        app:layout_constraintStart_toStartOf="@+id/tvFirstName"
+        app:layout_constraintTop_toBottomOf="@+id/tvFirstName" />
+
+
+    <TextView
+        android:id="@+id/tvLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/poppins"
+        android:text="Enter your last name"
+        app:layout_constraintStart_toStartOf="@+id/tvMain"
+        app:layout_constraintTop_toBottomOf="@+id/edFirstName" />
+
+
+    <EditText
+        android:id="@+id/edLastName"
+        android:layout_width="0dp"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="16sp"
+        android:elevation="2dp"
+
+
+        android:includeFontPadding="false"
+        android:paddingStart="10dp"
+        android:hint="Last name"
+        android:textColorHint="#656773"
+        app:layout_constraintEnd_toEndOf="@+id/tvMain"
+        app:layout_constraintStart_toStartOf="@+id/tvLastName"
+        app:layout_constraintTop_toBottomOf="@+id/tvLastName" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:textSize="17sp"
+        android:fontFamily="@font/poppins"
+        android:text="Enter your email address"
+        app:layout_constraintStart_toStartOf="@+id/tvMain"
+        app:layout_constraintTop_toBottomOf="@+id/edLastName" />
+
+
+    <EditText
+        android:id="@+id/edEmail"
+        android:layout_width="0dp"
+        android:background="@drawable/rounded_edit_text"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+        android:elevation="2dp"
+        android:drawableStart="@drawable/envelope_simple"
+        android:drawablePadding="15dp"
+
+        android:includeFontPadding="false"
+        android:paddingStart="10dp"
+        android:hint="main@email.com"
+        android:textColorHint="#656773"
+        app:layout_constraintEnd_toEndOf="@+id/tvMain"
+        app:layout_constraintStart_toStartOf="@+id/tvEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="17sp"
+        android:text="Password"
+        app:layout_constraintStart_toStartOf="@+id/edEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edEmail" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardCreatePassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/edEmail"
+        app:layout_constraintStart_toStartOf="@+id/tvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword">
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="#656773"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            >
+
+            <EditText
+                android:id="@+id/edCreatePassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:paddingVertical="5dp"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:drawableStart="@drawable/lock"
+                android:drawablePadding="15dp"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:hint="Enter your password"
+                android:textColorHint="#656773"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tvConfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="17sp"
+        android:text="Confirm password"
+        app:layout_constraintStart_toStartOf="@+id/cardCreatePassword"
+        app:layout_constraintTop_toBottomOf="@+id/cardCreatePassword" />
+
+<androidx.cardview.widget.CardView
+        android:id="@+id/cardConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="@+id/edEmail"
+        app:layout_constraintStart_toStartOf="@+id/tvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/tvConfirmPassword">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="#656773"
+            app:boxBackgroundColor="@color/white"
+            app:boxBackgroundMode="filled"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/show_password_selector"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp">
+
+            <EditText
+                android:id="@+id/edConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:paddingVertical="5dp"
+                android:inputType="textPassword"
+                android:textSize="16sp"
+                android:drawableStart="@drawable/lock"
+                android:drawablePadding="15dp"
+                android:includeFontPadding="false"
+                android:paddingStart="10dp"
+                android:hint="Repeat your password"
+                android:textColorHint="#656773"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btSignUp"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/cardConfirmPassword"
+        app:layout_constraintStart_toStartOf="@+id/cardConfirmPassword"
+        app:layout_constraintTop_toBottomOf="@+id/cardConfirmPassword" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/footer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
