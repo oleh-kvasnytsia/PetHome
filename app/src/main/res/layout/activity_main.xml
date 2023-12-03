@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -35,12 +36,12 @@
             android:id="@+id/btSignUp"
             android:layout_width="wrap_content"
             android:layout_height="33dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/button_bg2"
             android:text="Sign Up"
             android:textAllCaps="false"
-            android:textColor="#782620"
+            android:textColor="@drawable/bt_text_color_selector"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,8 +54,8 @@
 
             android:text="Log In"
             android:textAllCaps="false"
-            android:textColor="#782620"
-            app:layout_constraintBottom_toBottomOf="@+id/imLogo"
+            android:textColor="@drawable/bt_text_color_selector"
+
             app:layout_constraintEnd_toEndOf="@id/btSignUp"
             app:layout_constraintTop_toBottomOf="@id/btSignUp" />
 
@@ -77,20 +78,69 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                
+
                 <TextView
-                    android:layout_marginTop="20dp"
+                    android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Find your friend"
                     android:layout_gravity="center"
-                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
-                    />
+                    android:text="Find your friend"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="10dp">
+                    <ImageView
+                        android:id="@+id/imDogFilter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/button_bg2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView7"
+                        app:srcCompat="@drawable/dog" />
+
+                    <ImageView
+                        android:id="@+id/imCatFilter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        app:layout_constraintBottom_toBottomOf="@+id/imDogFilter"
+                        app:layout_constraintStart_toEndOf="@id/imDogFilter"
+                        app:layout_constraintTop_toTopOf="@+id/imDogFilter"
+                        app:srcCompat="@drawable/cat" />
+
+                    <ImageView
+                        android:id="@+id/imRabbitFilter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        app:layout_constraintBottom_toBottomOf="@+id/imCatFilter"
+                        app:layout_constraintEnd_toStartOf="@+id/imTurtleFilter"
+                        app:layout_constraintStart_toEndOf="@id/imCatFilter"
+                        app:layout_constraintTop_toTopOf="@+id/imCatFilter"
+                        app:srcCompat="@drawable/rabbit" />
+
+                    <ImageView
+                        android:id="@+id/imTurtleFilter"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_weight="1"
+                        app:layout_constraintBottom_toBottomOf="@+id/imRabbitFilter"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/imRabbitFilter"
+                        app:srcCompat="@drawable/turtle" />
+                </LinearLayout>
 
 
-                
-                
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -127,7 +177,7 @@
         <include
             layout="@layout/main_footer"
             android:layout_width="0dp"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rcView" />
