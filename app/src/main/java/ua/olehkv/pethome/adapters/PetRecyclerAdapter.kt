@@ -1,11 +1,14 @@
-package ua.olehkv.pethome
+package ua.olehkv.pethome.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import ua.olehkv.pethome.ChoosePetActivity
+import ua.olehkv.pethome.R
 import ua.olehkv.pethome.databinding.PetLayoutBinding
 import ua.olehkv.pethome.models.PetModel
 
@@ -19,7 +22,11 @@ class PetRecyclerAdapter(var petList: List<PetModel>, val context: Context) : Re
                 .load(pet.first_pet_photo)
                 .into(imageView)
             tvName.text = pet.name
-            tvLocation.text = pet.city
+            tvLocation.text = "id = ${pet.pet_id}"
+
+            itemView.setOnClickListener {
+                context.startActivity(Intent(context, ChoosePetActivity::class.java).putExtra("ID", pet.pet_id))
+            }
 
         }
     }

@@ -161,9 +161,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcView"
-            android:padding="3dp"
+            android:paddingHorizontal="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:splitMotionEvents="false"
             tools:itemCount="30"
             android:foregroundGravity="center_horizontal"
             tools:listitem="@layout/pet_layout"
@@ -176,6 +177,7 @@
 
         <include
             layout="@layout/main_footer"
+            android:layout_marginTop="20dp"
             android:layout_width="0dp"
             android:layout_height="500dp"
             app:layout_constraintEnd_toEndOf="parent"

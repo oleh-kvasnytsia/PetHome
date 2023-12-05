@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,15 +7,305 @@
     tools:context=".ChoosePetActivity">
 
 
-    <ImageView
-        android:id="@+id/imLogo"
-        android:layout_width="135dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="26dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imLogo"
+            android:layout_width="135dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/slider"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imLogo"
+            app:sliderAnimationDuration="600"
+            app:sliderAutoCycleDirection="back_and_forth"
+            app:sliderIndicatorAnimationDuration="600"
+            app:sliderIndicatorEnabled="true"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="#5A5A5A"
+            app:sliderIndicatorUnselectedColor="#FFF"
+            app:sliderScrollTimeInSec="1" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mainCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/slider"
+            app:cardBackgroundColor="#F5F5F5">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="30sp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintStart_toStartOf="@+id/sep1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Name" />
+
+                <TextView
+                    android:id="@+id/tvBreed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="24sp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintStart_toStartOf="@+id/tvName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvName"
+                    tools:text="Breed" />
+
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvLocation"
+                    app:layout_constraintEnd_toStartOf="@+id/tvLocation"
+                    app:layout_constraintTop_toTopOf="@+id/tvLocation"
+                    app:srcCompat="@drawable/loc" />
+
+                <TextView
+                    android:id="@+id/tvLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/poppins"
+                    android:includeFontPadding="false"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@id/sep1"
+                    app:layout_constraintTop_toBottomOf="@+id/tvBreed"
+                    tools:text="Location" />
+
+                <View
+                    android:id="@+id/sep1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="#B18346"
+                    app:layout_constraintTop_toBottomOf="@+id/tvLocation"
+                    tools:layout_editor_absoluteX="15dp" />
+
+                <TextView
+                    android:id="@+id/tvMainInfo"
+                    android:includeFontPadding="false"
+                    android:layout_width="280dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toEndOf="@+id/sep1"
+                    app:layout_constraintStart_toStartOf="@+id/sep1"
+                    app:layout_constraintTop_toBottomOf="@+id/sep1"
+                    tools:text="Gender  🐾  Size  🐾  Age  🐾  Sterilized  🐾  Chipped" />
+
+                <View
+                    android:id="@+id/sep2"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="13dp"
+                    android:background="#B18346"
+                    app:layout_constraintEnd_toEndOf="@+id/sep1"
+                    app:layout_constraintStart_toStartOf="@+id/sep1"
+                    app:layout_constraintTop_toBottomOf="@id/tvMainInfo" />
+
+                <TextView
+                    android:id="@+id/tvAbout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="24sp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintStart_toStartOf="@+id/sep2"
+                    app:layout_constraintTop_toBottomOf="@id/sep2"
+                    tools:text="About Name" />
+
+                <TextView
+                    android:id="@+id/tvDesc"
+                    android:layout_width="245dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="20sp"
+                    android:includeFontPadding="false"
+                    app:layout_constraintStart_toStartOf="@+id/tvAbout"
+                    app:layout_constraintTop_toBottomOf="@id/tvAbout"
+                    tools:text="Name is a very friendly and peaceful animal. Loves to eat everything, especially likes bones from skeletons in the closet." />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/proposalCard"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="#B18346"
+            app:cardCornerRadius="15dp"
+            android:layout_marginBottom="20dp"
+            app:contentPadding="15dp"
+
+            app:layout_constraintEnd_toEndOf="@id/mainCard"
+            app:layout_constraintStart_toStartOf="@id/mainCard"
+            app:layout_constraintTop_toBottomOf="@id/mainCard">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvWantToAdopt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    tools:text="Want to adopt &#xA;Bobik" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btClickHere"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Click here"
+                        android:layout_weight="0.6"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:textSize="22sp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/bt_click_here_bg"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btDonate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:text="Donate"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:textSize="22sp"
+                        android:textAllCaps="false"
+                        android:background="@drawable/bt_donate_bg"/>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/imLogo2"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintTop_toBottomOf="@id/proposalCard"
+            app:layout_constraintBottom_toTopOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="@+id/textView8"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/roboto_slab_bold"
+            android:text="Find your bestie"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_slab"
+            android:text="Contact with us:"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/imLogo2" />
+
+
+        <ImageView
+            android:id="@+id/imTwitter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            app:srcCompat="@drawable/twitter" />
+
+        <ImageView
+            android:id="@+id/imInst"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toStartOf="@+id/imFacebook"
+            app:layout_constraintStart_toEndOf="@+id/imTwitter"
+            app:layout_constraintTop_toTopOf="@+id/imTwitter"
+            app:srcCompat="@drawable/inst" />
+
+        <ImageView
+            android:id="@+id/imFacebook"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/textView9"
+            app:layout_constraintTop_toTopOf="@+id/imInst"
+            app:srcCompat="@drawable/facebook" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

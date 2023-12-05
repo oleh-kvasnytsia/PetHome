@@ -10,6 +10,7 @@ import retrofit2.http.Query
 import ua.olehkv.pethome.models.PetModel
 import ua.olehkv.pethome.retrofit.entities.LogInRequestBody
 import ua.olehkv.pethome.retrofit.entities.LogInResponseBody
+import ua.olehkv.pethome.retrofit.entities.PetInfo
 import ua.olehkv.pethome.retrofit.entities.SignUpRequestBody
 import ua.olehkv.pethome.retrofit.entities.SignUpResponseBody
 
@@ -36,6 +37,10 @@ interface MainApi {
     suspend fun signUpUser(
         @Body signUpRequestBody: SignUpRequestBody
     ) : Response<SignUpResponseBody>
+
+
+    @GET("/findAnimal")
+    suspend fun findAnimal(@Query("id") id: Int): Response<PetInfo>
 
 //    @POST("/register")
 //    fun registerUser(@Body requestBody: YourRequestBodyClass?): Call<YourResponseType?>?

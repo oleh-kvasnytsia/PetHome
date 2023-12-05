@@ -1,7 +1,7 @@
 package ua.olehkv.pethome.models
 
 data class PetModel(
-    val id: Int,
+    val pet_id: Int,
     val name: String,
     val city: String,
     val country: String,

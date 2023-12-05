@@ -4,18 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-//import com.mysql.cj.jdbc.MysqlDataSource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+import ua.olehkv.pethome.adapters.GridSpacingItemDecoration
+import ua.olehkv.pethome.adapters.PetRecyclerAdapter
 import ua.olehkv.pethome.databinding.ActivityMainBinding
 import ua.olehkv.pethome.models.PetModel
 import ua.olehkv.pethome.retrofit.MainApi
@@ -43,7 +43,11 @@ class MainActivity : AppCompatActivity() {
     private fun init() = with(binding) {
         adapter = PetRecyclerAdapter(listOf(), this@MainActivity)
         rcView.adapter = adapter
-        rcView.layoutManager = GridLayoutManager(this@MainActivity, 2)
+        val spanCount = 2 // кількість елементів у рядку
+        val spacing = 8
+        val includeEdge = true
+        rcView.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+//        rcView.layoutManager = GridLayoutManager(this@MainActivity, 2)
         val baseUrl = "https://pethomeback.onrender.com"
 
         val interceptor = HttpLoggingInterceptor()
@@ -64,14 +68,24 @@ class MainActivity : AppCompatActivity() {
         mainApi = retrofit.create(MainApi::class.java)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val petList = arrayListOf<PetModel>()
-            for (i in 0..3) {
-                val resp: Response<List<PetModel>> = mainApi.getPetCardsInfo("dog", i, 4)
-                resp.body()?.let { it1 -> petList.addAll(it1) }
-            }
-            runOnUiThread { adapter.updateList(petList) }
+            try {
+                val petList = arrayListOf<PetModel>()
+                for (i in 0..3) {
+                    val resp: Response<List<PetModel>> = mainApi.getPetCardsInfo("dog", i, 4)
+                    resp.body()?.let { it1 -> petList.addAll(it1) }
+                }
+                runOnUiThread {
+                    adapter.updateList(petList)
+                }
 
-            Log.d("MyTag", petList.toString())
+                Log.d("MyTag", petList.toString())
+            }
+            catch (e: Exception){
+                runOnUiThread {
+                    Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
         btSignUp.setOnClickListener {
             startActivity(Intent(this@MainActivity, SignUpActivity::class.java))
@@ -103,19 +117,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFilteredPets(selectedPet: String){
         CoroutineScope(Dispatchers.IO).launch {
-            val petList = arrayListOf<PetModel>()
-            for (i in 0..3) {
-                val resp: Response<List<PetModel>> = mainApi.getPetCardsInfo(selectedPet, i, 4)
-                resp.body()?.let { it1 -> petList.addAll(it1) }
-            }
-            runOnUiThread { adapter.updateList(petList) }
+            try {
+                val petList = arrayListOf<PetModel>()
+                for (i in 0..3) {
+                    val resp: Response<List<PetModel>> = mainApi.getPetCardsInfo(selectedPet, i, 4)
+                    resp.body()?.let { it1 -> petList.addAll(it1) }
+                }
+                runOnUiThread { adapter.updateList(petList) }
 
-            Log.d("MyTag", petList.toString())
+                Log.d("MyTag", petList.toString())
+            }
+            catch (e: Exception){
+                runOnUiThread {
+                    Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+
         }
     }
 
     private fun toggleFilterImages(view: View){
-
         val filterViews = binding.run {
             listOf(imDogFilter, imCatFilter, imRabbitFilter, imTurtleFilter)
         }
