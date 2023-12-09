@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import com.smarteist.autoimageslider.SliderView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,11 +25,6 @@ import ua.olehkv.pethome.retrofit.entities.PetInfo
 class ChoosePetActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChoosePetBinding
     private lateinit var mainApi: MainApi
-
-    private val url1 = "https://i.postimg.cc/qqQH1mD9/dog-photo1.jpg"
-    private val url2 = "https://i.postimg.cc/mrpBkY0h/chernaya-nemeckaya-ovcharka-1.jpg"
-    private val url3 = "https://i.postimg.cc/MKxPCGDX/1641459600-1-sobakovod-club-p-sobaki-vostochnaya-borzaya-1.jpg"
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChoosePetBinding.inflate(layoutInflater)
@@ -84,12 +80,13 @@ class ChoosePetActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun fillCard(petInfo: PetInfo) = with(binding){
 
-         fun getGender(g: String?) =
-             when(g){
+         fun getGender(g: String?) = with(g){
+             when (this) {
                  "M" -> "Male"
                  "F" -> "Female"
                  else -> "None"
              }
+         }
 
         fun getSize(size: String?) =
             if (size.isNullOrBlank()) "Not specified size"
@@ -201,12 +198,6 @@ class ChoosePetActivity : AppCompatActivity() {
 
     private fun initSlider(photos: ArrayList<String>){
         val sliderDataArrayList = photos.map { SliderData(it) }
-
-//        val sliderDataArrayList = arrayListOf(
-//            SliderData(url1),
-//            SliderData(url2),
-//            SliderData(url3),
-//        )
         val sliderView = binding.slider
         val adapter = SliderAdapter(this, sliderDataArrayList)
         sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR

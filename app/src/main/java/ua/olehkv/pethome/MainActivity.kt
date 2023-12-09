@@ -1,11 +1,15 @@
 package ua.olehkv.pethome
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -25,6 +29,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var mainApi: MainApi
     private lateinit var adapter: PetRecyclerAdapter
+    private lateinit var prefs: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +46,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() = with(binding) {
+//        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+//        drawer.addDrawerListener(object : DrawerListener {
+//            override fun onDrawerSlide(drawerView: View, slideOffset: Float) { }
+//
+//            override fun onDrawerOpened(drawerView: View) {
+//            }
+//            override fun onDrawerClosed(drawerView: View) {
+//                drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+//            }
+//
+//            override fun onDrawerStateChanged(newState: Int) {
+//                // Викликається, коли змінюється стан дравера
+//            }
+//        })
+        prefs = getSharedPreferences("main", Context.MODE_PRIVATE)
+        initNav()
         adapter = PetRecyclerAdapter(listOf(), this@MainActivity)
         rcView.adapter = adapter
         val spanCount = 2 // кількість елементів у рядку
@@ -85,15 +106,25 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, e.message, Toast.LENGTH_SHORT).show()
                 }
             }
-
         }
         btSignUp.setOnClickListener {
             startActivity(Intent(this@MainActivity, SignUpActivity::class.java))
+//            drawer.openDrawer(GravityCompat.END);
+//            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
         }
         btLogIn.setOnClickListener {
             startActivity(Intent(this@MainActivity, LogInActivity::class.java))
         }
 
+        navMenu.btExit.setOnClickListener {
+            val editor = prefs.edit()
+            editor.putBoolean("auth", false).apply()
+            recreate()
+            drawer.closeDrawer(GravityCompat.END)
+        }
+        btOpenDrawer.setOnClickListener {
+            drawer.openDrawer(GravityCompat.END);
+        }
     }
 
     private fun initFilterListeners() = with(binding){
@@ -136,6 +167,23 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun initNav() = with(binding){
+
+        val userIsAuthorized = prefs.getBoolean("auth", false)
+        if (userIsAuthorized) {
+            btOpenDrawer.visibility = View.VISIBLE
+            btLogIn.visibility = View.GONE
+            btSignUp.visibility = View.GONE
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+        }
+        else{
+            btOpenDrawer.visibility = View.GONE
+            btLogIn.visibility = View.VISIBLE
+            btSignUp.visibility = View.VISIBLE
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+        }
+    }
+
     private fun toggleFilterImages(view: View){
         val filterViews = binding.run {
             listOf(imDogFilter, imCatFilter, imRabbitFilter, imTurtleFilter)
@@ -143,6 +191,5 @@ class MainActivity : AppCompatActivity() {
         for (v in filterViews)
             if (v == view) v.setBackgroundResource(R.drawable.button_bg2)
             else v.background = null
-
     }
 }

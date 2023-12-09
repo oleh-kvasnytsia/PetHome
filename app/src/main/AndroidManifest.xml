@@ -16,16 +16,18 @@
         android:theme="@style/Theme.PetHome"
         tools:targetApi="31">
         <activity
-            android:name=".ChoosePetActivity"
-            android:exported="true"
-
-            >
-
-        </activity>
+            android:noHistory="true"
+            android:name=".AllDoneActivity"
+            android:exported="false" />
         <activity
+            android:name=".ChoosePetActivity"
+            android:exported="true"></activity>
+        <activity
+            android:noHistory="true"
             android:name=".LogInActivity"
             android:exported="false" />
         <activity
+            android:noHistory="true"
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity

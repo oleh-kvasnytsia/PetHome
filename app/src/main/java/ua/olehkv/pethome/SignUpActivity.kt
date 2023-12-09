@@ -1,5 +1,6 @@
 package ua.olehkv.pethome
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -59,15 +60,22 @@ class SignUpActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     val resp = mainApi.signUpUser(signUpRequestBody).body()!!
                     runOnUiThread {
-                        Toast.makeText(
-                            this@SignUpActivity,
-                            "Status: ${resp.status}\nMessage: ${resp.message}",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        if(resp.status == "FAILED")
+                            Toast.makeText(
+                                this@SignUpActivity,
+                                "Status: ${resp.status}\nMessage: ${resp.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+
+                        else {
+                            startActivity(Intent(this@SignUpActivity,AllDoneActivity::class.java))
+                        }
                     }
                 }
 
             }
         }
     }
+
+
 }
