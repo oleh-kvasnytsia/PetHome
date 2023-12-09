@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imLogo"
+            android:layout_width="135dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/tvStep1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="1. Add photo:"
+            android:textSize="20sp"
+            android:layout_marginHorizontal="40dp"
+            android:includeFontPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imLogo" />
+
+
+        <ImageView
+            android:id="@+id/imAddPetImg"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:src="@drawable/group1"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep1"
+            app:layout_constraintStart_toStartOf="@+id/tvStep1"
+            app:layout_constraintTop_toBottomOf="@id/tvStep1" />
+
+        <TextView
+            android:id="@+id/tvStep2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:text="2. Name:"
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep1"
+            app:layout_constraintStart_toStartOf="@+id/tvStep1"
+            app:layout_constraintTop_toBottomOf="@+id/imAddPetImg" />
+
+
+        <EditText
+            android:id="@+id/edPetName"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg2"
+            android:hint="Enter name"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"
+            android:includeFontPadding="false"
+            android:inputType="textPersonName"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep2"
+            app:layout_constraintStart_toStartOf="@+id/tvStep2"
+            app:layout_constraintTop_toBottomOf="@+id/tvStep2" />
+
+
+        <TextView
+            android:id="@+id/tvStep3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="3. Breed:"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep2"
+            app:layout_constraintStart_toStartOf="@+id/tvStep2"
+            app:layout_constraintTop_toBottomOf="@+id/edPetName"
+            app:layout_goneMarginTop="20dp" />
+
+        <Spinner
+            android:id="@+id/breedSpinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:entries="@array/catBreeds"
+            android:spinnerMode="dropdown"
+            android:paddingHorizontal="15dp"
+            android:background="@drawable/spinner_background"
+            android:prompt="@string/app_name"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/edPetName"
+            app:layout_constraintStart_toStartOf="@+id/edPetName"
+            app:layout_constraintTop_toBottomOf="@+id/tvStep3" />
+
+        <TextView
+            android:id="@+id/tvStep4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="4. Gender:"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep2"
+            app:layout_constraintStart_toStartOf="@+id/tvStep2"
+            app:layout_constraintTop_toBottomOf="@+id/breedSpinner"
+            app:layout_goneMarginTop="20dp" />
+
+        <RadioGroup
+            android:id="@+id/genderRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:checkedButton="@id/rbMale"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/breedSpinner"
+            app:layout_constraintStart_toStartOf="@+id/breedSpinner"
+            app:layout_constraintTop_toBottomOf="@+id/tvStep4">
+
+            <RadioButton
+                android:id="@+id/rbMale"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_selector"
+                android:button="@android:color/transparent"
+                android:drawableStart="@drawable/dogmale"
+                android:drawablePadding="5dp"
+                android:drawableTint="@drawable/text_and_image_selector"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="30dp"
+                android:text="Male"
+                android:textColor="@drawable/text_and_image_selector" />
+
+            <RadioButton
+                android:id="@+id/rbFemale"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/radio_button_selector"
+                android:button="@android:color/transparent"
+                android:drawableStart="@drawable/dogfemale"
+                android:drawablePadding="5dp"
+                android:drawableTint="@drawable/text_and_image_selector"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:paddingHorizontal="20dp"
+                android:text="Female"
+                android:textColor="@drawable/text_and_image_selector" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvStep5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="5. Size:"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep4"
+            app:layout_constraintStart_toStartOf="@+id/tvStep4"
+            app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup"
+            app:layout_goneMarginTop="20dp" />
+
+        <EditText
+            android:id="@+id/edPetSize"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@drawable/button_bg2"
+            android:hint="Enter___kg"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingHorizontal="15dp"
+            android:includeFontPadding="false"
+            android:inputType="numberSigned"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep5"
+            app:layout_constraintStart_toStartOf="@+id/tvStep5"
+            app:layout_constraintTop_toBottomOf="@+id/tvStep5" />
+
+        <TextView
+            android:id="@+id/tvStep6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="6. Age:"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvStep5"
+            app:layout_constraintStart_toStartOf="@+id/tvStep5"
+            app:layout_constraintTop_toBottomOf="@+id/edPetSize"
+            app:layout_goneMarginTop="20dp" />
+
+        <EditText
+            android:id="@+id/edPetAge"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_bg2"
+            android:fontFamily="@font/poppins"
+            android:hint="Enter___months"
+            android:includeFontPadding="false"
+            android:inputType="numberSigned"
+            android:paddingHorizontal="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/edPetSize"
+            app:layout_constraintStart_toStartOf="@+id/edPetSize"
+            app:layout_constraintTop_toBottomOf="@+id/tvStep6" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

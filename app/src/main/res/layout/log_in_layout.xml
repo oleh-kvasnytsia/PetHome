@@ -109,8 +109,7 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleDrawable="@drawable/show_password_selector"
             app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            >
+            app:boxStrokeWidthFocused="0dp">
 
             <EditText
                 android:id="@+id/edPassword"

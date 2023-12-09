@@ -19,6 +19,7 @@ class SliderAdapter(context: Context, private val sliderDataArrayList: List<Slid
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.slider_layout, null, false)
         return SliderAdapterViewHolder(view)
+
     }
 
     override fun onBindViewHolder(viewHolder: SliderAdapterViewHolder, position: Int) {

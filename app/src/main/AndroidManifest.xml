@@ -16,18 +16,29 @@
         android:theme="@style/Theme.PetHome"
         tools:targetApi="31">
         <activity
-            android:name=".ChoosePetActivity"
-            android:exported="true"
-
-            >
+            android:name=".AddPetActivity"
+            android:exported="true" >
 
         </activity>
         <activity
+            android:name=".AllDoneActivity"
+            android:exported="false"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChoosePetActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".LogInActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -37,6 +48,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
 
         <meta-data
