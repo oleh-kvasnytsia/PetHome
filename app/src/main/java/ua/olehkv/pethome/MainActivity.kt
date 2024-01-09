@@ -185,8 +185,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun toggleFilterImages(view: View){
         val filterViews = binding.run {
             listOf(imDogFilter, imCatFilter, imRabbitFilter, imTurtleFilter)
